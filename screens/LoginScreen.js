@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { AppRegistry, Image, Text, View, StyleSheet, TextInput, Dimensions, Button } from 'react-native';
 import firebase from 'firebase';
 import * as firebaseAPI from '../modules/firebaseAPI';
+import RegistrationScreen from '../screens/RegistrationScreen';
+import { StackNavigator } from 'react-navigation';
 
 const {width: WIDTH } = Dimensions.get('window')
 
@@ -30,6 +32,11 @@ export default class LoginScreen extends Component {
     navigation.navigate('Inscription');
   }
 
+  goAdd(navigation){
+    navigation.navigate('AddTrajet');
+  }
+
+
   login() {
     firebaseAPI.connexion(this.state.email, this.state.password )
   }
@@ -41,6 +48,8 @@ export default class LoginScreen extends Component {
 
     return (
        <View style = {styles.inputContainer}>
+
+       
         {<Image source={logo} style={styles.img}/>}
 
     
@@ -77,6 +86,13 @@ export default class LoginScreen extends Component {
             title= "Inscription"
             color="#99e265"
         />
+        
+        <Button style={styles.button}
+        onPress={() => this.goAdd(this.props.navigation)}
+          title="professionel"
+          color="#99e265"
+        />
+
       </View>
     );
   }
@@ -95,7 +111,7 @@ const styles = StyleSheet.create({
   img: {
     justifyContent: 'center',
     alignItems: 'stretch',
-    height: 500,
+    height: 300,
   },
   input: { 
     alignItems: 'stretch',
@@ -112,7 +128,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: 'bold',
   },
-  activeTitle: {
+  activeTitle: { 
     color: 'red',
   },
 });
