@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import LoginScreen from '../screens/LoginScreen';
+import AddTrajetScreen from '../screens/AddTrajetScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -26,18 +27,16 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const TrajetStack = createStackNavigator({
+    TrajetStack: AddTrajetScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
+TrajetStack.navigationOptions = {
+  tabBarLabel: 'Trajets',
+}
+
+let logo = {
+  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdX5XsZmrOmfbJ5ffbAduafONlNqDugTsxpiUy-eDfe7AnelGr'
 };
 
 const SettingsStack = createStackNavigator({
@@ -56,6 +55,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  TrajetStack,
   SettingsStack,
 });
